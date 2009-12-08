@@ -15,10 +15,18 @@
     </canvas>
     <div style="float: left">
       <h2>Test</h2>
-      Here is some stuff, yo?
+      <ul>
+	<li><h3 id="test1">test1</h3><br/>
+	  Show Euler's method for dx/dt = t - x^2. Click on the canvas to draw the path through that point.</li>
+	<li><h3 id="test2a">test2(a)</h3><br/>
+	  Show the breakdown of euler's method for the above equation with a step size of 0.05</li>
+	<li><h3 id="test2b">test2(b)</h3><br/>
+	  All better again with a smaller stepsize!</li>
     </div>
     <script type="text/javascript">
-      test1($doodle);
+      $('#test1').click(function() {test1($doodle);});
+      $('#test2a').click(function() {test2($doodle, 0.05);});
+      $('#test2b').click(function() {test2($doodle, 0.025);});
     </script>
   </body>
 </html>
