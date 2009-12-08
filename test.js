@@ -1,5 +1,5 @@
-function test(oo) {
-
+function test1(oo) {
+  $('#main-canvas').unbind("click");
   coords = new CoordSystem(oo, '#main-canvas',-1.0,9,-3,3);
   coords.drawAxis('#ffffff');
 
@@ -28,7 +28,22 @@ function test(oo) {
 				var mouse_x = e.pageX - this.offsetLeft;
 				var mouse_y = e.pageY - this.offsetTop;
 				var p = coords.toCoord(mouse_x, mouse_y);
-				coords.drawEulerApprox(100, p[0], p[1],
-						       gradFunction);
+				coords.drawEulerApprox({f: gradFunction,
+							x0: p[0],
+							y0: p[1]});
 			      });
+};
+
+
+function test2(oo, step) { //show the breakdown of euler's method
+  $('#main-canvas').unbind("click");
+
+  var coords = new CoordSystem(oo, '#main-canvas', 0, 900, -60, 60);
+  coords.drawAxis('#ffffff');
+
+  var f = function(t,x) { return t - x*x; };
+
+  coords.drawEulerApprox({f:f,
+			  step:step});
+
 };

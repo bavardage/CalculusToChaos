@@ -1,6 +1,8 @@
 function CoordSystem(doodle,canvas,xmin,xmax,ymin,ymax) {
   this.oo = doodle;
   this.oo.canvas('#main-canvas').bgcolor('#000000');
+  this.oo.canvas().context.setTransform(1, 0, 0, 1, 0, 0); //identity
+  this.oo.canvas().clear();
   //cw means canvas width, ch canvas height..
   this.cw = this.oo.canvas().width; this.ch = this.oo.canvas().height;
   this.xmin = xmin; this.xmax = xmax; this.xrange = xmax - xmin;
