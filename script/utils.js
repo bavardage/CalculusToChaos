@@ -21,3 +21,7 @@ function functionName(fn) {
   if(!name) return 'anonymous function: ' + fn.toString();
   return name[1];
 }
+
+function debug(text) {
+  $('#debug').html(text.toString());
+}

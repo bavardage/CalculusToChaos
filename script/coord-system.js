@@ -17,8 +17,13 @@ function CoordSystem(doodle,canvas,xmin,xmax,ymin,ymax) {
 }
 
 CoordSystem.prototype = {
-  toCanvas : function(x,y) { //convert coord to the coordinate to draw on
+  toCanvas : function(x,y, norm) { //convert coord to the coordinate to draw on
     // this takes into account the transformed canvas
+    if(norm) {
+      x = normalise(x, this.xmin, this.xmax);
+      y = normalise(y, this.ymin, this.ymax);
+    };
+
     var cx = x * this.cw / this.xrange;
     var cy = y * this.ch / this.yrange;
     return [cx,cy];

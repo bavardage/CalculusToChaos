@@ -8,26 +8,36 @@
     <script type="text/javascript" src="script/doodle-extensions.js"></script>
     <script type="text/javascript" src="script/maths.js"></script>
     <script type="text/javascript" src="test.js"></script>
+    <link rel="stylesheet" type="text/css" href="style/style.css" />
   </head>
   <body>
     <canvas id="main-canvas" width="400" height="400" style="float: left">
       <p>GET A DECENT BROWSER</p>
     </canvas>
     <div style="float: left">
-      <h2>Test</h2>
+      <h1>§4. Computer Solution Methods</h1>
+      <blockquote>
+	It is often quite impossible to solve a differential equation exactly, especially if the equation is non-linear...
+      </blockquote>
+      <h2>Examples</h2>
       <ul>
-	<li><h3 id="test1">test1</h3><br/>
-	  Show Euler's method for dx/dt = t - x^2. Click on the canvas to draw the path through that point.</li>
-	<li><h3 id="test2a">test2(a)</h3><br/>
-	  Show the breakdown of euler's method for the above equation with a step size of 0.05</li>
-	<li><h3 id="test2b">test2(b)</h3><br/>
-	  All better again with a smaller stepsize!</li>
+	<li id="fig4-1"><h3>Figure 4.1</h3>
+	  Solution curves to dx/dt = (1+t)x + 1 - 3t + t<sup>2</sup>. <a href="#">run example ▶</a></li>
+	<li id="fig4-5"><h3>Figure 4.5</h3>
+	  Show Euler's method for dx/dt = t - x<sup>2</sup>. Click on the canvas to draw the path through that point. <a href="#">run example ▶</a></li>
+	<li id="fig4-6a"><h3>Figure 4.6(a)</h3>
+	  Show the breakdown of euler's method for the above equation with a step size of 0.05. <a href="#">run example ▶</a></li>
+	<li id="fig4-6b"><h3>Figure 4.6(b)</h3>
+	  All better again with a smaller stepsize (0.025). <a href="#">run example ▶</a></li>
     </div>
     <script type="text/javascript">
-      $('#test1').click(function() {test1($doodle);});
-      $('#test2a').click(function() {test2($doodle, 0.05);});
-      $('#test2b').click(function() {test2($doodle, 0.025);});
+      $('#fig4-1 a').click(function() {fig41($doodle);});
+      $('#fig4-5 a').click(function() {fig45($doodle);});
+      $('#fig4-6a a').click(function() {fig46($doodle, 0.05);});
+      $('#fig4-6b a').click(function() {fig46($doodle, 0.025);});
     </script>
+    <div id="debug">
+    </div>
   </body>
 </html>
       
