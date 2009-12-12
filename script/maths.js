@@ -29,17 +29,18 @@ CoordSystem.prototype.drawEulerApprox = function(params) {
   }
 
   var y = y0;
+
+  var results = eulerApproximation(
+    {equations: [f],
+     startState: [y0],
+     t0: x0, tmin: this.xmin, tmax: this.xmax,
+     step: stepx});
+
   var path = [];
-  for(var x = x0; x >= this.xmin; x -= stepx) {
-    path.push(this.toCanvas(x,y,true));
-    y -= stepx * f(x,y);
-  }
-  path.reverse();
-  y = y0;
-  for(var x = x0; x <= this.xmax; x += stepx) {
-    path.push(this.toCanvas(x,y,true));
-    y += stepx * f(x,y);
-  }
+  results.forEach(function(e) {
+		    path.push(this.toCanvas(e[0], e[1][0], true));
+		  }, this);
+
   this.oo.drawPath({stroke: "#ff0000", path: path}).draw();
 };
 
@@ -86,7 +87,7 @@ function eulerApproximation(params) {
 
   for(var t = t0; t >= tmin; t -= step) {
     results.push([t, state.slice()]);
-    var oldState = state.slice();
+    var oldState = state.slice(); oldState.unshift(t);
     var l = eqs.length;
     for(var i = 0; i < l; i++) {
       state[i] -= step * eqs[i].apply(this, oldState);
@@ -98,7 +99,7 @@ function eulerApproximation(params) {
 
   for(var t = t0; t <= tmax; t += step) {
     results.push([t, state.slice()]);
-    var oldState = state.slice();
+    var oldState = state.slice(); oldState.unshift(t);
     var l = eqs.length;
     for(var i = 0; i < l; i++) {
       state[i] += step * eqs[i].apply(this, oldState);
