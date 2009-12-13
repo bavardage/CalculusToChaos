@@ -15,13 +15,13 @@
     <canvas id="main-canvas" width="400" height="400" style="float: left">
       <p>GET A DECENT BROWSER</p>
     </canvas>
-    <div style="float: left">
+    <div style="float: left;">
       <h1>§4. Computer Solution Methods</h1>
       <blockquote>
 	It is often quite impossible to solve a differential equation exactly, especially if the equation is non-linear...
       </blockquote>
       <h2>Examples</h2>
-      <ul>
+      <ul style="height: 300px; overflow: auto;">
 	<li id="fig4-1"><h3>Figure 4.1</h3>
 	  Solution curves to dx/dt = (1+t)x + 1 - 3t + t<sup>2</sup>. <a href="#">run example ▶</a></li>
 	<li id="fig4-5"><h3>Figure 4.5</h3>
@@ -31,7 +31,14 @@
 	<li id="fig4-6b"><h3>Figure 4.6(b)</h3>
 	  All better again with a smaller stepsize (0.025). <a href="#">run example ▶</a></li>
 	<li id="fig4-7"><h3>Figure 4.7</h3>
-	  LOL HARMONIC <a href="#">run example ▶</a></li>
+	  Euler's method applied to the system:
+	  <ul><li>ẋ = y</li><li>ẏ = -x</li></ul>
+	  Which has actual solution: x = a sin(t), y = a cos(t).
+	  <br>The approximation is run three times, with step sizes 
+	  <span style="color: #ff0000">0.05</span>, 
+	  <span style="color: #00ff00">0.02</span> and 
+	  <span style="color: #0000ff">0.001</span>.
+	  <a href="#">run example ▶</a></li>
     </div>
     <script type="text/javascript">
       $('#fig4-1 a').click(function() {fig41($doodle);});
